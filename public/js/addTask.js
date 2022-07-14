@@ -1,5 +1,5 @@
-$(document).ready(function(){
-    $("#backBtn").click(function(){
+$(document).ready(function () {
+    $("#backBtn").click(function () {
         location.href = "/tasks";
     })
 })
