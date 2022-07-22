@@ -22,7 +22,8 @@ const addtasks = function (req, res) {
     userService.getUsers(req).then(function(users){
         res.render('addTask', {
             title: 'Add Taks',
-            users
+            users,
+            btnName: 'save'
         })    
     }).catch(function(error){
         res.status(500).send('unable to render');
@@ -30,7 +31,20 @@ const addtasks = function (req, res) {
 }
 
 const edittasks = function (req, res) {
-    res.render('addTask');
+    userService.getUsers(req).then(function(user){
+        tasksService.getTaskById(req).then(function(task){
+            res.render('addTask', {
+                title: 'Edit Tasks',
+                task,
+                users,
+                btnName: 'Upadte'
+            });
+        }).catch(function(error){
+            res.status(500).send('unable to update')
+        })
+    }).catch(function(error){
+        res.status(500).send('unable to update')
+    })  
 }
 
 module.exports = {

@@ -25,9 +25,9 @@ const saveTask = function (req, res) {
     })
 }
 
-const upadateTask = function (req, res) {
-    service.upadateTask(req).then(function (task) {
-        res.status(201).send("User upadated");
+const updateTask = function (req, res) {
+    service.updateTask(req).then(function (task) {
+        res.status(201).send("User updated");
     }).catch(function (e) {
         res.status(500).send("Internal Server Error");
     })
@@ -45,6 +45,6 @@ module.exports = {
     getTasks,
     getTaskById,
     saveTask,
-    upadateTask,
+    updateTask,
     deleteTask
 }

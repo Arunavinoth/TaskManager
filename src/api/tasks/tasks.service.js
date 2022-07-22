@@ -25,7 +25,7 @@ const saveTask = function (req) {
     }
 }
 
-const upadateTask = function (req) {
+const updateTask = function (req) {
     try {
         return Tasks.findByIdAndUpdate(req.params.id, req.body)
     } catch (e) {
@@ -45,6 +45,6 @@ module.exports = {
     getTasks,
     getTaskById,
     saveTask,
-    upadateTask,
+    updateTask,
     deleteTask
 }
