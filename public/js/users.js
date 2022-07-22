@@ -16,7 +16,26 @@ $(document).ready(function () {
             return;
         }
 
-        alert(" deleted sucessfully");
+        var all, checked;
+        all = $("input:checkbox");
+        checked = all.filter(":checked");
+
+        var checkedIds = checked.map(function () {
+            return this.id;
+        });
+        console.log('checked id', checkedIds[0]);
+
+        $.ajax({
+            url: `/api/users/${checkedIds[0]}`,
+            type: 'DELETE',
+            success: function(){
+                alert(' Deleted sucessfully')
+                location.reload();
+            },
+            error: function(){
+                alert('unable to Delete');
+            }
+        })
     })
 
     $("#editBtn").click(function () {
@@ -27,6 +46,30 @@ $(document).ready(function () {
             return;
         }
 
-        location.href = '/users/edit';
+        // location.href = '/users/edit';
+
+        var all, checked;
+        all = $("input:checkbox");
+        checked = all.filter(":checked");
+
+        var checkedIds = checked.map(function () {
+            return this.id;
+        });
+
+        location.href = `/users/edit/${checkedIds[0]}`
+    })
+
+    $('#refresh').click(function(){
+        alert('i-------');
+        // location.href = '/users';
+    })
+
+    $('#search').click(function(){
+        var name = $('name').val();
+
+        if(!name){
+            return;
+        }
+        location.href = `/users?name=${name}`;
     })
 })

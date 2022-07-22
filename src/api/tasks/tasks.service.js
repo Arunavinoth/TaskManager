@@ -19,7 +19,7 @@ const getTaskById = function (req) {
 const saveTask = function (req) {
     try {
         var task = new Tasks(req.body);
-        return Tasks.save();
+        return task.save();
     } catch (e) {
         return e;
     }

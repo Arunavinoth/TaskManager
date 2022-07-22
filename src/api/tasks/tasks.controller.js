@@ -20,6 +20,7 @@ const saveTask = function (req, res) {
     service.saveTask(req).then(function (task) {
         res.status(201).send("User saved sucessfully");
     }).catch(function (e) {
+        console.log(e);
         res.status(500).send("Internal Server Error");
     })
 }

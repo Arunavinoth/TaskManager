@@ -25,7 +25,7 @@ const saveUsers = function (req) {
     }
 }
 
-const upadateUsers = function (req) {
+const updateUsers = function (req) {
     try {
         return Users.findByIdAndUpdate(req.params.id, req.body)
     } catch (e) {
@@ -45,6 +45,6 @@ module.exports = {
     getUsers,
     getUsersById,
     saveUsers,
-    upadateUsers,
+    updateUsers,
     deleteUsers
 }
